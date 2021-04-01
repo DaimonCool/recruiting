@@ -1,0 +1,24 @@
+server:
+  port: 8011
+
+spring:
+  application:
+    name: candidate-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/recruting
+    username: root
+    password: root
+  jpa:
+    properties:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  liquibase:
+    change-log: classpath:/liquibase/master.xml
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+

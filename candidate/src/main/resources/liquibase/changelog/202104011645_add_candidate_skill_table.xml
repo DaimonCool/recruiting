@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="Dmitry Dashko" id="202104011640-1">
+        <createTable tableName="candidate_skill">
+            <column autoIncrement="true" name="candidate_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="candidate_skillPK"/>
+            </column>
+            <column autoIncrement="true" name="skill_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="candidate_skillPK"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="candidate_id"
+                                 baseTableName="candidate_skill"
+                                 constraintName="candidate_skill__candidate_idFK"
+                                 referencedColumnNames="id"
+                                 referencedTableName="candidate"/>
+
+        <addForeignKeyConstraint baseColumnNames="skill_id"
+                                 baseTableName="candidate_skill"
+                                 constraintName="candidate_skill__skill_idFK"
+                                 referencedColumnNames="id"
+                                 referencedTableName="skill"/>
+
+    </changeSet>
+</databaseChangeLog>
