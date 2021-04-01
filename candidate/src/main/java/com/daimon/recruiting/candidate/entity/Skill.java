@@ -10,14 +10,13 @@ import javax.persistence.*;
 public class Skill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "skill_id_seq")
-    @SequenceGenerator(name = "skill_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     public static Skill from(SkillDto skillDto) {
         var skill = new Skill();
-        skill.setId(skill.getId());
+        skill.setId(skillDto.getId());
         skill.setName(skillDto.getName());
         return skill;
     }

@@ -1,18 +1,18 @@
 package com.daimon.recruiting.candidate.dto;
 
 import com.daimon.recruiting.candidate.entity.Candidate;
-import com.daimon.recruiting.candidate.entity.Skill;
 import lombok.Data;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
-public class CandidateDto {
+public class CandidateDto implements Serializable {
 
     private Long id;
     @NotBlank

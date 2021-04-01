@@ -4,9 +4,10 @@ import com.daimon.recruiting.candidate.entity.Skill;
 import lombok.Data;
 
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Data
-public class SkillDto {
+public class SkillDto implements Serializable {
 
     private Long id;
     @Size(max = 100)

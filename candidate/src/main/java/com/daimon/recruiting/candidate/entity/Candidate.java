@@ -12,8 +12,7 @@ import java.util.stream.Collectors;
 public class Candidate {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "candidate_id_seq")
-    @SequenceGenerator(name = "candidate_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;
@@ -21,10 +20,10 @@ public class Candidate {
     private String middleName;
     private String phone;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private City city;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "candidate_skill",
             joinColumns = @JoinColumn(name = "candidate_id"),

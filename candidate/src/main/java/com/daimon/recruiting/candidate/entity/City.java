@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class City {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "city_id_seq")
-    @SequenceGenerator(name = "city_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 

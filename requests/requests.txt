@@ -1,0 +1,59 @@
+1) Get candidate by id
+
+curl --location --request GET 'http://localhost:8011/candidates/1'
+
+2) Get candidate by criterias with pagination
+
+curl --location --request GET 'http://localhost:8011/candidates?sort=firstName&firstName=Dima&cityName=Karaganda&cityId=1&skills=Java,%20Hibernate&page=0&size=1'
+
+3) Create candidate
+
+curl --location --request POST 'http://localhost:8011/candidates' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "Dima",
+    "lastName": "Dashkoooo",
+    "middleName": "Konstantinovich",
+    "phone": "87787319927",
+    "city": {
+        "id": 1,
+        "name": "Karaganda"
+    },
+    "skills": [
+        {
+            "name": "Hibernateeeeeeeeeeeee"
+        },
+        {
+            "id": 1,
+            "name": "Spring Data"
+        }
+    ]
+}'
+
+4) Update candidate by id
+
+curl --location --request PUT 'http://localhost:8011/candidates/9' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "Dima",
+    "lastName": "Dashkoooo",
+    "middleName": "Konstantinovich",
+    "phone": "87787319927",
+    "city": {
+        "id": 1,
+        "name": "Karaganda"
+    },
+    "skills": [
+        {
+            "name": "Hibernate"
+        },
+        {
+            "id": 1,
+            "name": "Spring Data"
+        }
+    ]
+}'
+
+5) Delete candidate by id
+
+curl --location --request DELETE 'http://localhost:8011/candidates/10'
