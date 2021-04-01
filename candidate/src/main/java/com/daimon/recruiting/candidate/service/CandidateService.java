@@ -1,6 +1,7 @@
 package com.daimon.recruiting.candidate.service;
 
 import com.daimon.recruiting.candidate.dto.CandidateDto;
+import com.daimon.recruiting.candidate.entity.Candidate;
 import com.daimon.recruiting.candidate.repository.CandidateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class CandidateService {
 
     @Transactional
     public CandidateDto createCandidate(CandidateDto candidateDto) {
-        return null;
+        var createdCandidate = candidateRepository.save(Candidate.from(candidateDto));
+        return CandidateDto.from(createdCandidate);
     }
 }
