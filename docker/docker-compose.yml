@@ -10,12 +10,3 @@ services:
       TZ: Asia/Almaty
     ports:
       - "5432:5432"
-  s3:
-    image: minio/minio
-    ports:
-      - "9000:9000"
-    environment:
-      MINIO_ACCESS_KEY: minio_access_key
-      MINIO_SECRET_KEY: minio_secret_key
-      TZ: Asia/Almaty
-    command: server /data
