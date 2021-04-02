@@ -19,6 +19,7 @@ public class Candidate {
     private String lastName;
     private String middleName;
     private String phone;
+    private String resumePath;
 
     @ManyToOne
     private City city;

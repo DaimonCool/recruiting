@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <include file="liquibase//changelog/202104011637_add_city_table.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase//changelog/202104011639_add_skill_table.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase//changelog/202104011640_add_candidate_table.xml" relativeToChangelogFile="false"/>
-    <include file="liquibase//changelog/202104011645_add_candidate_skill_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/202104011637_add_city_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/202104011639_add_skill_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/202104011640_add_candidate_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/202104011645_add_candidate_skill_table.xml" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/202104021448_fill_city_table.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>

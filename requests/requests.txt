@@ -57,3 +57,26 @@ curl --location --request PUT 'http://localhost:8011/candidates/9' \
 5) Delete candidate by id
 
 curl --location --request DELETE 'http://localhost:8011/candidates/10'
+
+6) Get resume by id (if you are testing via Postman, for downloading a file you should choose "Send and download")
+
+curl --location --request GET 'http://localhost:8011/candidates/1/resumes'
+
+7) Create resume for candidate
+
+curl --location --request POST 'http://localhost:8011/candidates/1/resumes' \
+--form 'file=@"/C:/Users/krikk/OneDrive/Документы/Файл.txt"'
+
+8) Create resume for candidate
+
+curl --location --request POST 'http://localhost:8011/candidates/1/resumes' \
+--form 'file=@"/C:/Users/krikk/OneDrive/Документы/Файл.txt"'
+
+9) Update resume for candidate
+
+curl --location --request PUT 'http://localhost:8011/candidates/1/resumes' \
+--form 'file=@"/C:/Users/krikk/OneDrive/Документы/Файл.txt"'
+
+10) Delete resume for candidate
+
+curl --location --request DELETE 'http://localhost:8011/candidates/1/resumes'

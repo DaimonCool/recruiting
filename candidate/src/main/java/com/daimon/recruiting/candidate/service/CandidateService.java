@@ -35,14 +35,7 @@ public class CandidateService {
     @Transactional(readOnly = true)
     @Cacheable(CacheConfig.CANDIDATES_CACHE)
     public Page<CandidateDto> findCandidates(Pageable pageable, CandidateSearchCriteriaDto searchCriteriaDto) {
-        var specificationBuilder = new CandidateSpecificationBuilder();
-        specificationBuilder.with("firstName", FilterOperation.EQUAL, searchCriteriaDto.getFirstName());
-        specificationBuilder.with("lastName", FilterOperation.EQUAL, searchCriteriaDto.getLastName());
-        specificationBuilder.with("middleName", FilterOperation.EQUAL, searchCriteriaDto.getMiddleName());
-        specificationBuilder.with("phone", FilterOperation.LIKE, searchCriteriaDto.getPhone());
-        specificationBuilder.with("city", "name", FilterOperation.LIKE, searchCriteriaDto.getCityName());
-        specificationBuilder.with("city", "id", FilterOperation.EQUAL, searchCriteriaDto.getCityId());
-        specificationBuilder.with("skills", "name", FilterOperation.EQUAL_LIST, searchCriteriaDto.getSkills());
+        var specificationBuilder = createCandidateSpecificationBuilder(searchCriteriaDto);
         var specification = specificationBuilder.build();
         if (specification.isPresent()) {
             return candidateRepository.findAll(specification.get(), pageable).map(CandidateDto::from);
@@ -51,12 +44,29 @@ public class CandidateService {
         }
     }
 
+    private CandidateSpecificationBuilder createCandidateSpecificationBuilder(CandidateSearchCriteriaDto searchCriteriaDto) {
+        var specificationBuilder = new CandidateSpecificationBuilder();
+        specificationBuilder.with("firstName", FilterOperation.EQUAL, searchCriteriaDto.getFirstName());
+        specificationBuilder.with("lastName", FilterOperation.EQUAL, searchCriteriaDto.getLastName());
+        specificationBuilder.with("middleName", FilterOperation.EQUAL, searchCriteriaDto.getMiddleName());
+        specificationBuilder.with("phone", FilterOperation.LIKE, searchCriteriaDto.getPhone());
+        specificationBuilder.with("city", "name", FilterOperation.LIKE, searchCriteriaDto.getCityName());
+        specificationBuilder.with("city", "id", FilterOperation.EQUAL, searchCriteriaDto.getCityId());
+        specificationBuilder.with("skills", "name", FilterOperation.EQUAL_LIST, searchCriteriaDto.getSkills());
+        return specificationBuilder;
+    }
+
     @Transactional(readOnly = true)
     public CandidateDto findById(long id) {
+        return CandidateDto.from(findEntityById(id));
+    }
+
+    @Transactional(readOnly = true)
+    public Candidate findEntityById(long id) {
         var candidateOptional = candidateRepository.findById(id);
         var candidate = candidateOptional
                 .orElseThrow(() -> new NoSuchElementException(String.format(CANDIDATE_NOT_FOUND, id)));
-        return CandidateDto.from(candidate);
+        return candidate;
     }
 
     @Transactional
@@ -110,7 +120,6 @@ public class CandidateService {
         } else {
             throw new NoSuchElementException(String.format(CANDIDATE_NOT_FOUND, id));
         }
-
     }
 
 }

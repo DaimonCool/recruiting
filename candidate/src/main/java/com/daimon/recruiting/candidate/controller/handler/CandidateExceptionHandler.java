@@ -1,5 +1,6 @@
 package com.daimon.recruiting.candidate.controller.handler;
 
+import com.daimon.recruiting.candidate.exception.FileException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -19,6 +20,12 @@ public class CandidateExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleNoSuchElementException(NoSuchElementException ex) {
         return ex.getMessage();
+    }
+
+    @ExceptionHandler(FileException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleFileException(FileException ex) {
+        return "An error occurred while working with the file";
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

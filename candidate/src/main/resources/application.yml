@@ -14,6 +14,8 @@ spring:
     show-sql: false
   liquibase:
     change-log: classpath:/liquibase/master.xml
+resumes:
+  default-folder: resumes
 
 eureka:
   client:
