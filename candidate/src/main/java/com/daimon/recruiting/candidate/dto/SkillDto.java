@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Data
 public class SkillDto implements Serializable {
 
+    private static final long serialVersionUID = -3543562180322383984L;
+
     private Long id;
     @Size(max = 100)
     private String name;

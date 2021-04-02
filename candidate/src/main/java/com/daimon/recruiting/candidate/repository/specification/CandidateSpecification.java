@@ -1,13 +1,11 @@
 package com.daimon.recruiting.candidate.repository.specification;
 
 import com.daimon.recruiting.candidate.entity.Candidate;
-import com.daimon.recruiting.candidate.entity.City;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor

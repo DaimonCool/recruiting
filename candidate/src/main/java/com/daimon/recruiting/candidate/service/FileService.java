@@ -1,5 +1,6 @@
 package com.daimon.recruiting.candidate.service;
 
+import com.daimon.recruiting.candidate.exception.FileException;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Files;
@@ -13,7 +14,7 @@ public class FileService {
         try {
             return Files.write(Paths.get(path), content).toAbsolutePath().toString();
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new FileException();
         }
     }
 
@@ -21,7 +22,7 @@ public class FileService {
         try {
             Files.delete(Paths.get(path));
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new FileException();
         }
     }
 
@@ -29,7 +30,7 @@ public class FileService {
         try {
             return Files.readAllBytes(Paths.get(path));
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            throw new FileException();
         }
     }
 

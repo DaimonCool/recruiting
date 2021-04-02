@@ -8,6 +8,8 @@ import java.util.Set;
 @Data
 public class CandidateSearchCriteriaDto implements Serializable {
 
+    private static final long serialVersionUID = 8535720001422855868L;
+
     private String firstName;
     private String lastName;
     private String middleName;

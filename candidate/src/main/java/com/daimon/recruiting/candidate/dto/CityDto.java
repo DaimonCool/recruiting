@@ -10,6 +10,8 @@ import java.io.Serializable;
 @Data
 public class CityDto implements Serializable {
 
+    private static final long serialVersionUID = -1760158619549695218L;
+
     @NotNull
     private Long id;
     @Size(max = 100)

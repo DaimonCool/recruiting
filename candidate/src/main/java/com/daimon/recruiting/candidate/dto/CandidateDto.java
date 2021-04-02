@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 @Data
 public class CandidateDto implements Serializable {
 
+    private static final long serialVersionUID = -7545508808257562682L;
+
     private Long id;
     @NotBlank
     @Size(max = 100)
